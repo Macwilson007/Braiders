@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/contexts/CartContext';
 import styles from './product.module.css';
@@ -12,7 +12,7 @@ const PRODUCTS = [
 ];
 
 export default function ProductPage({ params }) {
-  const { id } = params;
+  const { id } = use(params);
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
