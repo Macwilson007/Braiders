@@ -5,8 +5,8 @@
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 4px;
-  height: 100vh;
-  min-height: 700px;
+  height: calc(100vh - 100px); /* Account for 64px header + 36px marquee */
+  min-height: 600px;
 }
 
 .heroMain { position: relative; }
@@ -309,7 +309,7 @@
 
 /* === RESPONSIVE === */
 @media (max-width: 968px) {
-  .heroGrid { grid-template-columns: 1fr; height: auto; min-height: 100vh; }
+  .heroGrid { grid-template-columns: 1fr; height: auto; min-height: calc(100vh - 100px); }
   .heroPlaceholder { min-height: 60vh; }
   .heroContent { padding: var(--space-2xl); justify-content: flex-end; }
   .heroTitle { font-size: clamp(2.5rem, 8vw, 4rem); }
