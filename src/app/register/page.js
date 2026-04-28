@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import styles from './auth.module.css';
+import styles from '../login/auth.module.css';
 
 export default function RegisterPage() {
   const [form, setForm] = useState({ fullName: '', email: '', phone: '', password: '', confirmPassword: '' });
