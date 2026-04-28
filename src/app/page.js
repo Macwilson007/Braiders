@@ -119,7 +119,9 @@ export default function HomePage() {
               <img src="/images/braids_bg.jpg" alt="Braiders Salon" className={styles.heroImage} />
               <div className={styles.heroContent}>
                 <span className={styles.heroLabel}>Lagos&apos;s Premier Hair Studio</span>
-                <h1 className={styles.heroTitle}>WHERE EVERY STRAND TELLS A STORY</h1>
+                <h1 className={styles.heroTitle}>
+                  WHERE EVERY STRAND<br />TELLS A STORY
+                </h1>
                 <p className={styles.heroSubtitle}>
                   Expert braiding, styling, and treatments that celebrate the beauty of African hair.
                 </p>

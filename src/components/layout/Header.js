@@ -156,7 +156,7 @@ export default function Header() {
     timeoutRef.current = setTimeout(() => setActiveMega(null), 200);
   };
 
-  if (isAdmin || isDashboard) return null;
+  if (isAdmin) return null;
 
   return (
     <>
