@@ -1,13 +1,30 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { useEffect } from 'react';
 import styles from './dashboard.module.css';
 
 export default function DashboardLayout({ children }) {
   const pathname = usePathname();
-  const { user, logout } = useAuth();
+  const router = useRouter();
+  const { user, loading, logout } = useAuth();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
+    }
+  }, [user, loading, router]);
+
+  const handleLogout = () => {
+    logout();
+    router.push('/login');
+  };
+
+  if (loading || !user) {
+    return <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading Dashboard...</div>;
+  }
 
   const menuItems = [
     { label: 'Overview', href: '/dashboard', icon: '⌂' },
@@ -23,9 +40,9 @@ export default function DashboardLayout({ children }) {
           {/* Sidebar */}
           <aside className={styles.sidebar}>
             <div className={styles.userCard}>
-              <div className={styles.avatar}>{user?.name?.charAt(0) || 'U'}</div>
+              <div className={styles.avatar}>{user?.full_name?.charAt(0) || 'U'}</div>
               <div className={styles.userInfo}>
-                <span className={styles.userName}>{user?.name || 'Guest User'}</span>
+                <span className={styles.userName}>{user?.full_name || 'Guest User'}</span>
                 <span className={styles.userRole}>{user?.role || 'Customer'}</span>
               </div>
             </div>
@@ -41,7 +58,7 @@ export default function DashboardLayout({ children }) {
                   {item.label}
                 </Link>
               ))}
-              <button onClick={logout} className={styles.logoutBtn}>
+              <button onClick={handleLogout} className={styles.logoutBtn}>
                 <span className={styles.navIcon}>⎗</span> Logout
               </button>
             </nav>
