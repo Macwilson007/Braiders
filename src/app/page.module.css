@@ -3,10 +3,11 @@
 
 .heroGrid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: 1.8fr 1fr; /* Increased width for better text fitting */
   gap: 4px;
   height: calc(100vh - 100px); /* Account for 64px header + 36px marquee */
   min-height: 600px;
+  overflow: hidden; /* Prevent side cards or images from spilling into other sections */
 }
 
 .heroMain { position: relative; }
@@ -51,7 +52,7 @@
 
 .heroTitle {
   font-family: var(--font-body);
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-size: clamp(2rem, 5vw, 4.5rem); /* Reduced font size to fit 2 lines */
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.02em;
@@ -139,7 +140,12 @@
 .heroCardLink:hover { color: var(--color-accent); }
 
 /* === VALUES === */
-.values { background: var(--color-white); }
+.values { 
+  background: var(--color-white); 
+  position: relative;
+  z-index: 10; /* Ensure it stays above any hero background spill */
+  margin-top: 0;
+}
 .valuesHeader { margin-bottom: var(--space-3xl); }
 
 .valueCard {
