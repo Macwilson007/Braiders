@@ -23,6 +23,9 @@
 .stepContent { animation: fadeInUp 400ms cubic-bezier(0.16, 1, 0.3, 1); }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .stepTitle { font-family: var(--font-body); font-size: var(--fs-xl); font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-xl); }
+.searchWrapper { margin-bottom: var(--space-lg); }
+.searchInput { width: 100%; border-radius: 0; border: 2px solid var(--color-gray-100); padding: var(--space-md) var(--space-lg); font-size: var(--fs-sm); transition: border-color 200ms ease; }
+.searchInput:focus { border-color: var(--color-black); outline: none; }
 
 /* Service List */
 .serviceList { display: flex; flex-direction: column; gap: var(--space-sm); }
@@ -36,6 +39,7 @@
 .serviceOptName { font-weight: 700; font-size: var(--fs-sm); display: block; }
 .serviceOptMeta { font-size: 12px; color: var(--color-gray-500); }
 .serviceOptPrice { font-weight: 800; font-size: var(--fs-base); }
+.loadMoreWrapper { display: flex; justify-content: center; margin-top: var(--space-xl); }
 
 /* Stylist Grid */
 .stylistGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }

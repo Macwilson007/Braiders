@@ -1,13 +1,30 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { useEffect } from 'react';
 import styles from './admin.module.css';
 
 export default function AdminLayout({ children }) {
   const pathname = usePathname();
-  const { logout } = useAuth();
+  const router = useRouter();
+  const { user, loading, logout } = useAuth();
+
+  useEffect(() => {
+    if (!loading && (!user || user.role !== 'admin')) {
+      router.push('/login');
+    }
+  }, [user, loading, router]);
+
+  const handleLogout = () => {
+    logout();
+    router.push('/login');
+  };
+
+  if (loading || !user || user.role !== 'admin') {
+    return <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000', color: '#fff' }}>Verifying Admin Access...</div>;
+  }
 
   const menuItems = [
     { label: 'Overview', href: '/admin', icon: '📊' },
@@ -40,7 +57,7 @@ export default function AdminLayout({ children }) {
         </nav>
 
         <div className={styles.sidebarFooter}>
-          <button onClick={logout} className={styles.logoutBtn}>⎗ Logout</button>
+          <button onClick={handleLogout} className={styles.logoutBtn}>⎗ Logout</button>
         </div>
       </aside>
 
@@ -52,8 +69,8 @@ export default function AdminLayout({ children }) {
           </div>
           <div className={styles.headerRight}>
             <div className={styles.adminInfo}>
-              <span>Aisha Bello (Owner)</span>
-              <div className={styles.adminAvatar}>A</div>
+              <span>{user?.full_name || 'Admin'} ({user?.role})</span>
+              <div className={styles.adminAvatar}>{user?.full_name?.charAt(0) || 'A'}</div>
             </div>
           </div>
         </header>

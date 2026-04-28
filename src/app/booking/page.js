@@ -53,6 +53,8 @@ function BookingContent() {
   });
   const [confirmed, setConfirmed] = useState(false);
   const [bookingRef, setBookingRef] = useState('');
+  const [servicesVisible, setServicesVisible] = useState(6);
+  const [serviceSearch, setServiceSearch] = useState('');
 
   const selectedService = SERVICES_LIST.find(s => s.id === booking.serviceId);
   const selectedStylist = STYLISTS.find(s => s.id === booking.stylistId);
@@ -138,18 +140,41 @@ function BookingContent() {
           {/* Step 1: Service */}
           {step === 1 && (
             <div className={styles.stepContent}>
-              <h2 className={styles.stepTitle}>SELECT A SERVICE</h2>
-              <div className={styles.serviceList}>
-                {SERVICES_LIST.map(service => (
-                  <button key={service.id} className={`${styles.serviceOption} ${booking.serviceId === service.id ? styles.serviceOptionActive : ''}`} onClick={() => setBooking({ ...booking, serviceId: service.id })}>
-                    <div>
-                      <span className={styles.serviceOptName}>{service.name}</span>
-                      <span className={styles.serviceOptMeta}>{service.category} · {service.duration}</span>
-                    </div>
-                    <span className={styles.serviceOptPrice}>₦{service.price.toLocaleString()}</span>
-                  </button>
-                ))}
+              <div className={styles.searchWrapper}>
+                <input 
+                  type="text" 
+                  placeholder="Search services (e.g. Braids, Styling...)" 
+                  className={`form-input ${styles.searchInput}`}
+                  value={serviceSearch}
+                  onChange={(e) => {
+                    setServiceSearch(e.target.value);
+                    setServicesVisible(6); // Reset visibility on search
+                  }}
+                />
               </div>
+
+              <div className={styles.serviceList}>
+                {SERVICES_LIST
+                  .filter(s => s.name.toLowerCase().includes(serviceSearch.toLowerCase()) || s.category.toLowerCase().includes(serviceSearch.toLowerCase()))
+                  .slice(0, servicesVisible)
+                  .map(service => (
+                    <button key={service.id} className={`${styles.serviceOption} ${booking.serviceId === service.id ? styles.serviceOptionActive : ''}`} onClick={() => setBooking({ ...booking, serviceId: service.id })}>
+                      <div>
+                        <span className={styles.serviceOptName}>{service.name}</span>
+                        <span className={styles.serviceOptMeta}>{service.category} · {service.duration}</span>
+                      </div>
+                      <span className={styles.serviceOptPrice}>₦{service.price.toLocaleString()}</span>
+                    </button>
+                  ))}
+              </div>
+
+              {servicesVisible < SERVICES_LIST.filter(s => s.name.toLowerCase().includes(serviceSearch.toLowerCase()) || s.category.toLowerCase().includes(serviceSearch.toLowerCase())).length && (
+                <div className={styles.loadMoreWrapper}>
+                  <button className="btn btn-secondary" onClick={() => setServicesVisible(prev => prev + 6)}>
+                    Load More Services
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
