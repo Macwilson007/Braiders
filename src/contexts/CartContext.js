@@ -56,8 +56,15 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider value={{
-      items, addItem, removeItem, updateQuantity, clearCart,
-      totalItems, totalPrice, isOpen, setIsOpen
+      cart: items, 
+      addToCart: addItem, 
+      removeFromCart: removeItem, 
+      updateQuantity, 
+      clearCart,
+      totalItems, 
+      getCartTotal: () => totalPrice,
+      isOpen, 
+      setIsOpen
     }}>
       {children}
     </CartContext.Provider>
