@@ -1,0 +1,325 @@
+/* === HERO === */
+.hero { margin-top: 0; }
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 4px;
+  min-height: 80vh;
+}
+
+.heroMain { position: relative; }
+
+.heroImageWrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 80vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.heroContent {
+  padding: var(--space-4xl);
+  max-width: 640px;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(to right, rgba(10,10,10,0.8) 0%, transparent 100%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.heroLabel {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: var(--space-lg);
+}
+
+.heroTitle {
+  font-family: var(--font-body);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  color: var(--color-white);
+  margin-bottom: var(--space-lg);
+}
+
+.heroSubtitle {
+  font-size: var(--fs-md);
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  margin-bottom: var(--space-2xl);
+  max-width: 440px;
+}
+
+.heroCtas {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Hero Side Cards */
+.heroSide {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.heroCard {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.heroCardImage {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+  transition: transform var(--duration-slower) var(--ease-out);
+}
+
+.heroCard:hover .heroCardImage {
+  transform: scale(1.06);
+}
+
+.heroCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.1) 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-xl);
+}
+
+.heroCardLabel {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+}
+
+.heroCardTitle {
+  font-family: var(--font-body);
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin: 4px 0;
+}
+
+.heroCardLink {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color var(--duration-fast) ease;
+}
+
+.heroCardLink:hover { color: var(--color-accent); }
+
+/* === VALUES === */
+.values { background: var(--color-white); }
+.valuesHeader { margin-bottom: var(--space-3xl); }
+
+.valueCard {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.valueCard:hover { transform: translateY(-4px); }
+
+.valueIcon {
+  font-size: 28px;
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: var(--space-lg);
+}
+
+.valueTitle {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-sm);
+}
+
+.valueText {
+  font-size: var(--fs-sm);
+  color: var(--color-gray-700);
+  line-height: 1.7;
+}
+
+/* === SERVICES === */
+.services { background: var(--color-cream); }
+
+.serviceCard { border: none; }
+
+.serviceImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slower) var(--ease-out);
+}
+
+.serviceCard:hover .serviceImage {
+  transform: scale(1.08);
+}
+
+/* === PROMO BANNER === */
+.promoBanner {
+  background: var(--color-primary);
+  padding: 0;
+  text-align: center;
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.promoImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.promoContent { max-width: 640px; margin: 0 auto; }
+
+.promoLabel {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.promoTitle {
+  font-family: var(--font-body);
+  font-size: var(--fs-4xl);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: var(--space-lg);
+  line-height: 1.1;
+}
+
+.promoText {
+  font-size: var(--fs-md);
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin-bottom: var(--space-2xl);
+}
+
+/* === TESTIMONIALS === */
+.testimonials { background: var(--color-white); }
+
+.testimonialCard {
+  background: var(--color-cream);
+  padding: var(--space-2xl);
+  position: relative;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.testimonialCard:hover { transform: translateY(-4px); }
+
+.testimonialQuote {
+  font-family: var(--font-display);
+  font-size: 64px;
+  color: var(--color-primary);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: -20px;
+}
+
+.testimonialText {
+  font-size: var(--fs-base);
+  color: var(--color-dark);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: var(--space-xl);
+}
+
+.testimonialAuthor {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.testimonialAvatar {
+  width: 40px;
+  height: 40px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.testimonialName {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  display: block;
+}
+
+.testimonialService {
+  font-size: var(--fs-xs);
+  color: var(--color-gray-500);
+}
+
+/* === SHOP PREVIEW === */
+.shopPreview { padding: var(--space-5xl) 0; }
+
+/* === FINAL CTA === */
+.finalCta {
+  padding: var(--space-5xl) 0;
+  background: var(--color-cream);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 968px) {
+  .heroGrid { grid-template-columns: 1fr; min-height: auto; }
+  .heroPlaceholder { min-height: 60vh; }
+  .heroContent { padding: var(--space-2xl); }
+  .heroTitle { font-size: clamp(2rem, 6vw, 3rem); }
+  .heroSide { flex-direction: row; }
+  .promoTitle { font-size: var(--fs-2xl); }
+}
+
+@media (max-width: 640px) {
+  .heroSide { flex-direction: column; }
+  .heroCardPlaceholder { min-height: 180px; }
+  .heroCtas { flex-direction: column; }
+  .heroCtas .btn { width: 100%; text-align: center; }
+}

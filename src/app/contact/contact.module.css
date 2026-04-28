@@ -1,0 +1,86 @@
+.hero {
+  background: linear-gradient(135deg, #1A1118, #5A1E38);
+  padding: var(--space-5xl) 0 var(--space-4xl);
+}
+.heroInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+.heroLabel {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.2em; color: var(--color-accent); display: block; margin-bottom: var(--space-md);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-4xl);
+}
+
+.formRow { display: flex; gap: var(--space-lg); }
+
+.successMsg {
+  padding: var(--space-md) var(--space-lg);
+  background: #E8F5EE;
+  color: var(--color-success);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-xl);
+}
+
+.infoSection { display: flex; flex-direction: column; gap: var(--space-xl); }
+
+.infoCard {
+  background: var(--color-white);
+  padding: var(--space-xl);
+  border: 1px solid var(--color-gray-100);
+}
+
+.infoTitle {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.15em; margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm); border-bottom: 2px solid var(--color-black);
+}
+
+.infoText {
+  font-size: var(--fs-sm); color: var(--color-gray-700); line-height: 1.7; margin-bottom: var(--space-sm);
+}
+
+.infoLink {
+  font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--color-primary);
+}
+.infoLink:hover { color: var(--color-primary-dark); }
+
+.contactItem {
+  display: flex; flex-direction: column; gap: 2px; margin-bottom: var(--space-sm);
+}
+.contactItemLabel {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--color-accent-dark);
+}
+.contactItem a {
+  font-size: var(--fs-sm); color: var(--color-gray-700); transition: color 150ms ease;
+}
+.contactItem a:hover { color: var(--color-primary); }
+
+.hoursList { display: flex; flex-direction: column; gap: var(--space-xs); }
+.hoursItem {
+  display: flex; justify-content: space-between; font-size: var(--fs-sm);
+  color: var(--color-gray-700); padding: 6px 0; border-bottom: 1px solid var(--color-gray-100);
+}
+
+.mapSection { height: 400px; }
+.mapPlaceholder {
+  width: 100%; height: 100%;
+  background: var(--color-gray-100);
+  display: flex; align-items: center; justify-content: center;
+}
+.mapText { font-size: var(--fs-sm); color: var(--color-gray-500); font-weight: 600; }
+
+@media (max-width: 968px) {
+  .contactGrid { grid-template-columns: 1fr; }
+  .formRow { flex-direction: column; gap: 0; }
+}
